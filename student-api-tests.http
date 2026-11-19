@@ -1,0 +1,78 @@
+### Add student 101
+POST http://localhost:8080/api/students
+Content-Type: application/json
+
+{
+  "studentId": 101,
+  "studentName": "Gauri Mishra",
+  "email": "gauri@example.com",
+  "courseName": "B.Tech CSIT",
+  "programmingScore": 82,
+  "mathematicsScore": 91,
+  "technicalSkills": ["Java", "Python", "SQL"]
+}
+
+### Add student 102 (programming below 50, maths at least 75)
+POST http://localhost:8080/api/students
+Content-Type: application/json
+
+{
+  "studentId": 102,
+  "studentName": "Aanya Sharma",
+  "email": "aanya@example.com",
+  "courseName": "B.Tech CSE",
+  "programmingScore": 42,
+  "mathematicsScore": 78,
+  "technicalSkills": ["Python", "HTML"]
+}
+
+### Add student 103 (same skill set as student 101)
+POST http://localhost:8080/api/students
+Content-Type: application/json
+
+{
+  "studentId": 103,
+  "studentName": "Riya Verma",
+  "email": "riya@example.com",
+  "courseName": "B.Tech CSIT",
+  "programmingScore": 74,
+  "mathematicsScore": 68,
+  "technicalSkills": ["Java", "Python", "SQL"]
+}
+
+### Get all students
+GET http://localhost:8080/api/students
+
+### Get student by ID
+GET http://localhost:8080/api/students/101
+
+### Search by ID, email, or course (use one parameter at a time)
+GET http://localhost:8080/api/students/search?studentId=101
+
+### Search by email
+GET http://localhost:8080/api/students/search?email=aanya@example.com
+
+### Search by course
+GET http://localhost:8080/api/students/search?course=CSIT
+
+### Merit list
+GET http://localhost:8080/api/students/merit-list
+
+### Students with the same technical skill set (101 and 103 should group together)
+GET http://localhost:8080/api/students/same-skills
+
+### Programming below 50 and maths >= 75 (should include student 102)
+GET http://localhost:8080/api/students/programming-needs-improvement
+
+### Update student 102's scores and skills
+PUT http://localhost:8080/api/students/102/scores-skills
+Content-Type: application/json
+
+{
+  "programmingScore": 58,
+  "mathematicsScore": 84,
+  "technicalSkills": ["Java", "Spring Boot", "MySQL"]
+}
+
+### Delete student 103
+DELETE http://localhost:8080/api/students/103
